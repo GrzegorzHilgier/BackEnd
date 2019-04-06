@@ -37,8 +37,15 @@ namespace WebApp
                         (resolver as DefaultContractResolver).NamingStrategy = null;
                     }
                 });
-            services.AddDbContext<ApplicationContext>(options=>
+
+            services.AddDbContext<VesselContext>(options=>
             options.UseSqlServer(Configuration.GetConnectionString("DevConnection")));
+
+            services.AddDbContext<AuthenticationContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+
+            services.AddDefaultIdentity<ApplicationUser>().
+                AddEntityFrameworkStores<AuthenticationContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +55,8 @@ namespace WebApp
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseAuthentication();
 
             app.UseMvc();
         }

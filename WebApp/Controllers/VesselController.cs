@@ -13,9 +13,9 @@ namespace WebApp.Controllers
     [ApiController]
     public class VesselController : ControllerBase
     {
-        private readonly ApplicationContext _context;
+        private readonly VesselContext _context;
 
-        public VesselController(ApplicationContext context)
+        public VesselController(VesselContext context)
         {
             _context = context;
         }

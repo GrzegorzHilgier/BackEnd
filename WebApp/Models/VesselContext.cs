@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace WebApp.Models
 {
-    public class ApplicationContext : DbContext
+    public class VesselContext : DbContext
     {
-        public ApplicationContext( DbContextOptions <ApplicationContext> options) : base(options)
+        public VesselContext( DbContextOptions <VesselContext> options) : base(options)
         {
 
         }
