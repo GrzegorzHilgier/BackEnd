@@ -9,7 +9,7 @@ using WebApp.Models;
 namespace WebApp.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20190402134248_InitialCreate")]
+    [Migration("20190405204245_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,19 +20,25 @@ namespace WebApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebApp.Models.Client", b =>
+            modelBuilder.Entity("WebApp.Models.Vessel", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Length")
+                        .HasColumnType("varchar(100)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("varchar(100)");
 
+                    b.Property<string>("Tonage")
+                        .HasColumnType("varchar(100)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Client");
+                    b.ToTable("Vessel");
                 });
 #pragma warning restore 612, 618
         }

@@ -11,56 +11,56 @@ namespace WebApp.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ClientController : ControllerBase
+    public class VesselController : ControllerBase
     {
         private readonly ApplicationContext _context;
 
-        public ClientController(ApplicationContext context)
+        public VesselController(ApplicationContext context)
         {
             _context = context;
         }
 
-        // GET: api/Client
+        // GET: api/Vessel
         [HttpGet]
-        public IEnumerable<Client> GetClient()
+        public IEnumerable<Vessel> GetVessel()
         {
-            return _context.Client;
+            return _context.Vessel;
         }
 
-        // GET: api/Client/5
+        // GET: api/Vessel/5
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetClient([FromRoute] int id)
+        public async Task<IActionResult> GetVessel([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var client = await _context.Client.FindAsync(id);
+            var vessel = await _context.Vessel.FindAsync(id);
 
-            if (client == null)
+            if (vessel == null)
             {
                 return NotFound();
             }
 
-            return Ok(client);
+            return Ok(vessel);
         }
 
-        // PUT: api/Client/5
+        // PUT: api/Vessel/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutClient([FromRoute] int id, [FromBody] Client client)
+        public async Task<IActionResult> PutVessel([FromRoute] int id, [FromBody] Vessel vessel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != client.Id)
+            if (id != vessel.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(client).State = EntityState.Modified;
+            _context.Entry(vessel).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +68,7 @@ namespace WebApp.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ClientExists(id))
+                if (!VesselExists(id))
                 {
                     return NotFound();
                 }
@@ -81,45 +81,45 @@ namespace WebApp.Controllers
             return NoContent();
         }
 
-        // POST: api/Client
+        // POST: api/Vessel
         [HttpPost]
-        public async Task<IActionResult> PostClient([FromBody] Client client)
+        public async Task<IActionResult> PostVessel([FromBody] Vessel vessel)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            _context.Client.Add(client);
+            _context.Vessel.Add(vessel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetClient", new { id = client.Id }, client);
+            return CreatedAtAction("GetVessel", new { id = vessel.Id }, vessel);
         }
 
-        // DELETE: api/Client/5
+        // DELETE: api/Vessel/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteClient([FromRoute] int id)
+        public async Task<IActionResult> DeleteVessel([FromRoute] int id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var client = await _context.Client.FindAsync(id);
-            if (client == null)
+            var vessel = await _context.Vessel.FindAsync(id);
+            if (vessel == null)
             {
                 return NotFound();
             }
 
-            _context.Client.Remove(client);
+            _context.Vessel.Remove(vessel);
             await _context.SaveChangesAsync();
 
-            return Ok(client);
+            return Ok(vessel);
         }
 
-        private bool ClientExists(int id)
+        private bool VesselExists(int id)
         {
-            return _context.Client.Any(e => e.Id == id);
+            return _context.Vessel.Any(e => e.Id == id);
         }
     }
 }

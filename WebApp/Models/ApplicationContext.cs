@@ -15,7 +15,7 @@ namespace WebApp.Models
 
         }
 
-        public DbSet<Client> Client { get; set; }
+        public DbSet<Vessel> Vessel { get; set; }
     }
 
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace WebApp.Models
 {
-    public class Client
+    public class Vessel
     {
         [Key]
         public int Id { get; set; }
@@ -15,6 +15,9 @@ namespace WebApp.Models
         [Required]
         [Column(TypeName = "varchar(100)")]
         public string Name { get; set; }
-        
+        [Column(TypeName = "varchar(100)")]
+        public string  Tonage { get; set; }
+        [Column(TypeName = "varchar(100)")]
+        public string Length { get; set; }
     }
 }
