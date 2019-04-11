@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,7 @@ namespace WebApp.Controllers
 
         // GET: api/Vessel
         [HttpGet]
+        [Authorize]
         public IEnumerable<Vessel> GetVessel()
         {
             return _context.Vessel;
@@ -29,6 +31,7 @@ namespace WebApp.Controllers
 
         // GET: api/Vessel/5
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<IActionResult> GetVessel([FromRoute] int id)
         {
             if (!ModelState.IsValid)
@@ -48,6 +51,7 @@ namespace WebApp.Controllers
 
         // PUT: api/Vessel/5
         [HttpPut("{id}")]
+        [Authorize]
         public async Task<IActionResult> PutVessel([FromRoute] int id, [FromBody] Vessel vessel)
         {
             if (!ModelState.IsValid)
@@ -83,6 +87,7 @@ namespace WebApp.Controllers
 
         // POST: api/Vessel
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> PostVessel([FromBody] Vessel vessel)
         {
             if (!ModelState.IsValid)
@@ -98,6 +103,7 @@ namespace WebApp.Controllers
 
         // DELETE: api/Vessel/5
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteVessel([FromRoute] int id)
         {
             if (!ModelState.IsValid)

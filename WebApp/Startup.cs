@@ -57,7 +57,7 @@ namespace WebApp
                 options.Password.RequireUppercase = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
-                options.Password.RequiredLength = 4;
+                
             });
 
             //JWT authentication
